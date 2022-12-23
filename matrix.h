@@ -1,7 +1,9 @@
 #include<bits/stdc++.h>
 using namespace std;
+//*task: https://stackoverflow.com/questions/2981836/how-can-i-use-cout-myclass
 
-struct matrix{
+class matrix{
+    public:
     //var
     int line, col;
     vector< vector<int> > mt;
@@ -10,18 +12,17 @@ struct matrix{
         line = l, col = l;
         mt.resize(l, vector<int>(l, 0));
     }
+    void f1_bai4();
     void resize(){};
     void set_matrix();
     void print_matrix();
     vector<vector<int>> get_matrix();
-
     matrix operator* (const matrix b);
     matrix operator* (int const num);
     matrix operator= (const matrix b);
     matrix operator+ (const matrix b);
     matrix operator- (const matrix b);
 };
-
 
 //Nhập vào ma trận
 void matrix::set_matrix(){
@@ -120,3 +121,24 @@ matrix matrix:: operator- (const matrix b){
     }
     return c;
 }
+
+void matrix::f1_bai4(){
+    //mt[i][j] < 1000;
+    //sàn nguyên tố Eratosthenes
+    vector<bool> isprime(1001, true);
+    isprime[1] = isprime[0] = false;
+    for(int num = 2; num <= 1000; num++){
+        if(!isprime[num]) continue;
+        for(int k = num*num; k <= 1000; k+=num){
+            isprime[k] = false;
+        }
+    }
+    //duyệt hết ma trận
+    cout << "All prime numbers in matrix:\n";
+    for(int i = 0; i < line; i++){
+        for(int j = 0; j < col; j++){
+            if(isprime[ mt[i][j] ]) cout << setw(3) << mt[i][j];
+        }
+    }
+    cout << endl;
+};
