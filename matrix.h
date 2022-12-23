@@ -14,26 +14,13 @@ struct matrix{
     void set_matrix();
     void print_matrix();
     vector<vector<int>> get_matrix();
+
     matrix operator* (const matrix b);
     matrix operator* (int const num);
     matrix operator= (const matrix b);
     matrix operator+ (const matrix b);
     matrix operator- (const matrix b);
 };
-
-int main(){
-    matrix A, B;
-    A.set_matrix();
-    B.set_matrix();
-    A.print_matrix();
-    B.print_matrix();
-    (A*3).print_matrix();
-    (A+B).print_matrix();
-    (A*B).print_matrix();
-    (B+A).print_matrix();
-    system("pause");
-return 0;
-}
 
 void matrix::set_matrix(){
     cout << "Enter line and col of matrix: \n";
