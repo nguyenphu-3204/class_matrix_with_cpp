@@ -22,6 +22,8 @@ struct matrix{
     matrix operator- (const matrix b);
 };
 
+
+//Nhập vào ma trận
 void matrix::set_matrix(){
     cout << "Enter line and col of matrix: \n";
     cin >> line >> col;
@@ -34,6 +36,7 @@ void matrix::set_matrix(){
     }
 }
 
+//In ra ma trận
 void matrix::print_matrix(){
     cout << "Matrix " << line << "*" << col <<":\n";
     for(int i = 0; i < line; i++){
@@ -45,10 +48,12 @@ void matrix::print_matrix(){
     cout << endl;
 };
 
+//Trả về vector 2 chiều
 vector<vector<int>> matrix::get_matrix(){
     return mt;
 };
 
+//Toán tử * : nhân có hướng
 matrix matrix::operator* (const matrix b){
     if( this->col != b.line){
         cout << "Cannot multiple!\n";
@@ -65,6 +70,7 @@ matrix matrix::operator* (const matrix b){
     return c;
 };
 
+//Toán tử * : Nhân vô hướng với 1 số
 matrix matrix::operator* (int const num){
     matrix c(line, col);
     for(int i = 0; i < c.line; i++){
@@ -77,6 +83,7 @@ matrix matrix::operator* (int const num){
     return c;
 };
 
+//Toán tử = : Gán giá trị của ma trận B cho ma trận này
 matrix matrix:: operator= (const matrix b){
     line = b.line; 
     col = b.col;
@@ -84,6 +91,7 @@ matrix matrix:: operator= (const matrix b){
     return *this;
 };
 
+//Toán tử cộng, thực hiện phép cộng với ma trận
 matrix matrix:: operator+ (const matrix b){
     if( col != b.col || line != b.line){
         cout << "Cannot add!\n";
@@ -98,6 +106,7 @@ matrix matrix:: operator+ (const matrix b){
     return c;
 }
 
+//Toán tử cộng, thực hiện phép trừ với ma trận
 matrix matrix:: operator- (const matrix b){
     if( col != b.col || line != b.line){
         cout << "Cannot add!\n";
